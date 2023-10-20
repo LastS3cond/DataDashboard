@@ -33,7 +33,7 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-https://i.imgur.com/YwaRTOq.gif
+[https://i.imgur.com/YwaRTOq.gif]
 ## Notes
 
 Some challenges encountered were with the API. I had to completely scratch most of the previous work with this project since I didn't have a good understanding of API calls in React.
