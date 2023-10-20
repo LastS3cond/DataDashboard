@@ -10,7 +10,7 @@ function App() {
   const [filteredData, setFilteredData] = useState([]);
   const [avgDayTemp, setAvgDayTemp] = useState(0);
   const [avgNightTemp, setAvgNightTemp] = useState(0);
-  const [avgDayUV, setAvgDayUV] = useState([]);
+  const [avgDayWind, setAvgDayWind] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [selectedType, setSelectedType] = useState("all");
 
@@ -26,23 +26,23 @@ function App() {
   useEffect(() => { 
     var dayCounter = 0;
     var nightCounter = 0;
-    var uvAvg = 0;
+    var windAvg = 0;
     var dayTemp = 0;
     var nightTemp = 0;
     for (let i = 0; i < (allTemp.length); i++ ){
       if (allTemp[i].pod === "d") {
         dayTemp = dayTemp + allTemp[i].app_temp;
-        uvAvg = uvAvg + allTemp[i].uv;
         dayCounter++;
       }
       if (allTemp[i].pod === "n") {
         nightTemp = nightTemp + allTemp[i].app_temp;
         nightCounter++;
       }
+      windAvg = windAvg + allTemp[i].wind_spd;
     }
     setAvgDayTemp((dayTemp/dayCounter).toFixed());
     setAvgNightTemp((nightTemp/nightCounter).toFixed());
-    setAvgDayUV((uvAvg/dayCounter).toFixed());
+    setAvgDayWind((windAvg/(dayCounter+nightCounter)).toFixed());
   }, [allTemp]);
   
 
@@ -97,9 +97,9 @@ function App() {
     </div>
     <div className='content'>
       <div className='topBar'>
-        <h1>    Average Day Temperature: {avgDayTemp}   </h1>
-        <h1>    Average Night Temperature: {avgNightTemp}   </h1>
-        <h1>    Average UV: {avgDayUV}   </h1>
+        <h1>    Average Day Temperature: {avgDayTemp}°F  </h1>
+        <h1>    Average Night Temperature: {avgNightTemp}°F   </h1>
+        <h1>    Average Wind Speed: {avgDayWind} MPH  </h1>
       </div>
       <div className="selectors">
         <select value={selectedType} onChange={handleTypeChange}>
@@ -117,7 +117,12 @@ function App() {
       </div>
       <div className="mainContent">
         {filteredData.map((filteredData) => (
-        <p>Time: {filteredData.timestamp_local} Temp: {filteredData.temp}</p>
+        <div>
+          <p>Time: {(filteredData.timestamp_local).substring(5,10)} {(filteredData.timestamp_local).substring(11,16)}</p>
+          <p>Temp: {filteredData.temp}°F</p>
+          <p>Precipitation: {filteredData.pop}%</p>
+          <p>Forecast: {filteredData.weather.description}</p>
+        </div>
         ))}
       </div>
     </div>

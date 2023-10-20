@@ -25,11 +25,10 @@ body {
 .topBar {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
 }
 
 .topBar h1 {
-  margin: 0;
+  margin:20px;
 }
 
 .mainContent {
@@ -38,7 +37,7 @@ body {
   grid-gap: 20px;
 }
 
-.mainContent p {
+.mainContent div {
   border: 1px solid #ccc;
   padding: 10px;
 }
