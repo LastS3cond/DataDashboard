@@ -73,7 +73,21 @@ function App() {
           }
         }
         setFilteredData(newData);
-    } else {
+      } else if (selectedType === "rainy") {
+        for (let i = 0; i < (allTemp.length); i++ ){
+          if (allTemp[i].precip > 0) {
+            newData.push(allTemp[i])
+          }
+        }
+        setFilteredData(newData);
+      } else if (selectedType === "dry") {
+        for (let i = 0; i < (allTemp.length); i++ ){
+          if (allTemp[i].precip == 0) {
+            newData.push(allTemp[i])
+          }
+        }
+        setFilteredData(newData);
+      } else {
           setFilteredData(allTemp);
       }
   }, [selectedType]);
@@ -106,6 +120,8 @@ function App() {
             <option value="all">All</option>
             <option value="day">DayTime</option>
             <option value="night">NightTime</option>
+            <option value="rainy">Rainy</option>
+            <option value="dry">Dry</option>
         </select>
         <input
             type="text"
@@ -120,8 +136,9 @@ function App() {
         <div>
           <p>Time: {(filteredData.timestamp_local).substring(5,10)} {(filteredData.timestamp_local).substring(11,16)}</p>
           <p>Temp: {filteredData.temp}°F</p>
-          <p>Precipitation: {filteredData.pop}%</p>
+          <p>Chance of Rain: {filteredData.pop}%</p>
           <p>Forecast: {filteredData.weather.description}</p>
+          <p>Precipitation: {filteredData.precip} inches</p>
         </div>
         ))}
       </div>
