@@ -60,3 +60,26 @@ Link {
   background:#1d1f1d;
   width:75px;
 }
+
+.HourlyDetails {
+  /* Add your styles for the container div here */
+  /* For example: */
+  border: 2px solid #ccc;
+  padding: 20px;
+}
+
+.HourlyDetails h2 {
+  /* Add your styles for the h2 element here */
+}
+
+.HourlyDetails p {
+  /* Add your styles for the p elements here */
+  /* For example: */
+  margin: 8px 0;
+}
+Remember to customize the styles according to your specific design requirements.
+
+
+
+
+
