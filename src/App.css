@@ -5,6 +5,9 @@ body {
   display: flex;
 }
 
+.WeatherInfo {
+  cursor: pointer;
+}
 .sideBar {
   background-color: #333;
   color: #fff;
@@ -14,7 +17,6 @@ body {
 
 .sideBar h1 {
   margin: 10px 0;
-  cursor: pointer;
 }
 
 .content {
@@ -40,4 +42,21 @@ body {
 .mainContent div {
   border: 1px solid #ccc;
   padding: 10px;
+}
+
+nav {
+  display: block; 
+  font-size: 2em;
+  font-weight: bold;
+  margin: 10px 0;
+}
+Link {
+  cursor: pointer;
+}
+
+.home-link 
+{
+  border:1px dotted white;
+  background:#1d1f1d;
+  width:75px;
 }
