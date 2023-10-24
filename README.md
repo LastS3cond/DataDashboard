@@ -88,9 +88,8 @@ Here's a walkthrough of implemented user stories:
 (https://imgur.com/a/2xSTFlv.gif)
 
 ## Notes
+Some challenges encountered were with routing, but found useNavigation to be very helpful in that endeavor.
 
-Describe any challenges encountered while building the app.
-Had a couple challenges with routing, but found useNavigation to be very helpful in that endeavor.
 ## License
 
     Copyright [2023] [Jaydon Bingham]
