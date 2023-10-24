@@ -1,7 +1,6 @@
 // WeatherDetail.jsx
 import React from 'react';
 import { useState, useEffect } from 'react'
-import { useNavigate } from "react-router-dom";
 const WeatherDetail = (props) => {
   // Retrieve the timestamp from the query parameter
   const searchParams = new URLSearchParams(window.location.search);
@@ -17,7 +16,6 @@ const WeatherDetail = (props) => {
   }
 }, [props.data]);
 
-console.log(props.data)
   return (
     <div className='HourlyDetails'>
         <h2>Hourly Details for {(props.data[counter].timestamp_local).substring(5,10)} {(props.data[counter].timestamp_local).substring(11,16)}</h2>

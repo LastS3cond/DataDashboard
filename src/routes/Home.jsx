@@ -1,8 +1,15 @@
-import WeatherDetail from "../components/WeatherDetail.jsx";
 import { useState, useEffect } from 'react'
-import { Link, useNavigate, Routes } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import '../App.css'
-
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Label,
+  Tooltip,
+} from "recharts"
 const Home = (props) => {
 
   const [filteredData, setFilteredData] = useState([]);
@@ -11,6 +18,7 @@ const Home = (props) => {
   const [avgDayWind, setAvgDayWind] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [selectedType, setSelectedType] = useState("all");
+  const [chartData, setChartData] = useState([]);
   const navigate = useNavigate()
 
   useEffect(() => { 
@@ -35,8 +43,16 @@ const Home = (props) => {
     setAvgNightTemp((nightTemp/nightCounter).toFixed());
     setAvgDayWind((windAvg/(dayCounter+nightCounter)).toFixed());
     setSelectedType("all");
+    setUpChart();
   }, [props.data]);
   
+  const setUpChart =() =>{
+      let chart = [];
+        for (let i = 0; i < (props.data.length); i++ ){
+          chart.push({"time":`${props.data[i].timestamp_local.substring(5,10)}|${props.data[i].timestamp_local.substring(11,16)}`, "Hourly Temp":props.data[i].temp})
+        setChartData(chart)
+    }
+  }
 
   useEffect(() => {
     let newData = []
@@ -92,9 +108,22 @@ const Home = (props) => {
     setSelectedType(event.target.value);
   };
 
+  console.log(chartData)
 
   return (
       <div className='content'>
+        {chartData.length > 0 &&
+         <LineChart width={730} height={250} data={chartData}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="time" >
+          <Label value="Datetime over a 5 Day Period" offset={-5} position="insideBottom" />
+        </XAxis>
+        <YAxis>
+          <Label value="Temperature in Farenheit" angle={-90} offset={100} position="insideBottom" />
+        </YAxis>
+        <Line type="monotone" dataKey="Hourly Temp" stroke="#8884d8" />
+          <Tooltip />
+      </LineChart> }
       <div className='topBar'>
         <h1>    Average Day Temperature: {avgDayTemp}°F  </h1>
         <h1>    Average Night Temperature: {avgNightTemp}°F   </h1>
@@ -134,7 +163,6 @@ const Home = (props) => {
         ))}
       </div>
     </div>
-    
   );
 };
 
