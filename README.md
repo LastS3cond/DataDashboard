@@ -86,6 +86,7 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 (https://imgur.com/a/2xSTFlv.gif)
+<blockquote class="imgur-embed-pub" lang="en" data-id="a/2xSTFlv"  ><a href="//imgur.com/a/2xSTFlv">Data Dashboard Part 2</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 ## Notes
 
