@@ -10,7 +10,6 @@ function App() {
 
   const [allTemp, setAllTemp] = useState([]);
 
-
   useEffect(() => {
     const parse = async () => {
       const response = await axios.get(`https://api.weatherbit.io/v2.0/forecast/hourly?&city=blacksburg&country=US&hours=120&units=I&key=${ACCESS_KEY}`);

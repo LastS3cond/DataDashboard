@@ -16,6 +16,7 @@ const WeatherDetail = (props) => {
   }
 }, [props.data]);
 
+
   return (
     <div className='HourlyDetails'>
         <h2>Hourly Details for {(props.data[counter].timestamp_local).substring(5,10)} {(props.data[counter].timestamp_local).substring(11,16)}</h2>

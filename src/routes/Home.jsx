@@ -146,6 +146,7 @@ const Home = (props) => {
           className="search-input"
         />
       </div>
+      
       <div className="mainContent">
         {filteredData.map((dataPoint) => (
           <div className="WeatherInfo" key={dataPoint.timestamp_local}
